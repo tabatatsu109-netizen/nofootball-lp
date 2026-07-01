@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームページ制作 依頼シート | nofootball</title>
+<meta name="description" content="nofootballのホームページ制作依頼シートです。チームの情報を順番に入力するだけで、制作に必要な情報をお送りいただけます。">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ホームページ制作 依頼シート | nofootball">
+<meta property="og:description" content="チームの情報を順番に入力するだけ。専門知識は不要です。">
+<meta property="og:locale" content="ja_JP">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/order-form.css">
+</head>
+<body data-theme="midnight">
+
+<div class="of-page">
+  <div class="of-wrap">
+
+    <!-- ===== ヘッダー ===== -->
+    <header class="of-header">
+      <div>
+        <div class="of-eyebrow-row">
+          <span class="of-eyebrow-bar"></span>
+          <span class="of-eyebrow">Homepage Production</span>
+        </div>
+        <h1 class="of-title">ホームページ制作 依頼シート</h1>
+        <p class="of-sub">チームの情報を順番に入力するだけ。専門知識は不要です。あとはお任せください。</p>
+      </div>
+      <div class="theme-picker">
+        <span class="theme-picker__label">テーマ</span>
+        <div class="theme-picker__row">
+          <button type="button" class="theme-btn" data-theme-btn="midnight" aria-label="ミッドナイトテーマ">
+            <span class="theme-btn__dot" style="background:#38bdf8;box-shadow:0 0 8px #38bdf8"></span>ミッドナイト
+          </button>
+          <button type="button" class="theme-btn" data-theme-btn="blaze" aria-label="ブレイズテーマ">
+            <span class="theme-btn__dot" style="background:#ff5b2e;box-shadow:0 0 8px #ff5b2e"></span>ブレイズ
+          </button>
+          <button type="button" class="theme-btn" data-theme-btn="turf" aria-label="ターフテーマ">
+            <span class="theme-btn__dot" style="background:#8ee63f;box-shadow:0 0 8px #8ee63f"></span>ターフ
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== フォーム本体 ===== -->
+    <div id="of-form-root">
+
+      <!-- ステップ進捗 -->
+      <div class="of-steps" id="of-steps"></div>
+
+      <div class="of-card">
+
+        <!-- STEP 1: プラン選択 -->
+        <section class="step-panel" data-step-panel="1">
+          <div class="of-h2-row"><span class="of-h2-bar"></span><h2 class="of-h2">プランを選ぶ</h2></div>
+          <p class="of-desc">まずは希望のページ数・ボリュームに合わせてプランを選んでください。あとから相談も可能です。</p>
+          <div class="plan-grid" id="plan-grid"></div>
+          <div class="of-tip">
+            <span class="of-tip__icon">📱</span>
+            <div class="of-tip__text"><b>全プラン共通：マッチプランナー導入</b><br>最新情報・試合結果・選手情報・スケジュールを、スマホから専門知識なしで更新できます（ホームページと自動連携）。</div>
+          </div>
+        </section>
+
+        <!-- STEP 2: クラブ基本情報 -->
+        <section class="step-panel" data-step-panel="2">
+          <div class="of-h2-row"><span class="of-h2-bar"></span><h2 class="of-h2">クラブ基本情報</h2></div>
+          <p class="of-desc"><span class="req-mark">*</span> は必須項目です。分かる範囲で大丈夫です。</p>
+          <div class="field-grid">
+            <label class="field field--full">クラブ・チーム名 <span class="req-mark">*</span>
+              <input class="field-input" type="text" id="f-clubName" placeholder="例）レイクサイド フットボールクラブ">
+            </label>
+            <label class="field">競技・種目
+              <input class="field-input" type="text" id="f-sport" placeholder="例）サッカー / U-15">
+            </label>
+            <label class="field">設立年
+              <input class="field-input" type="text" id="f-founded" placeholder="例）2011年">
+            </label>
+            <label class="field field--full">活動拠点・所在地
+              <input class="field-input" type="text" id="f-address" placeholder="例）〇〇県〇〇市 〇〇グラウンド">
+            </label>
+            <label class="field">ご担当者名 <span class="req-mark">*</span>
+              <input class="field-input" type="text" id="f-contact" placeholder="例）山田 太郎">
+            </label>
+            <label class="field">電話番号
+              <input class="field-input" type="tel" id="f-phone" placeholder="例）090-1234-5678">
+            </label>
+            <label class="field">メールアドレス <span class="req-mark">*</span>
+              <input class="field-input" type="email" id="f-email" placeholder="例）info@club.jp">
+            </label>
+            <label class="field">現在のサイトURL（あれば）
+              <input class="field-input" type="text" id="f-existingUrl" placeholder="https://">
+            </label>
+          </div>
+        </section>
+
+        <!-- STEP 3: ブランド素材 -->
+        <section class="step-panel" data-step-panel="3">
+          <div class="of-h2-row"><span class="of-h2-bar"></span><h2 class="of-h2">ブランド素材</h2></div>
+          <p class="of-desc">ロゴやチームカラー、掲載したい写真をアップロードしてください。（後からの追加も可能です）</p>
+
+          <div class="of-label-sm">ロゴ / エンブレム</div>
+          <label class="upload-box" id="logo-box">
+            <span class="upload-box__preview" id="logo-preview">🛡️</span>
+            <span class="upload-box__text">
+              <span class="upload-box__title" id="logo-label">ロゴをアップロード</span>
+              <span class="upload-box__hint">PNG / JPG / SVG・クリックして選択</span>
+            </span>
+            <input type="file" accept="image/*" id="f-logo" hidden>
+          </label>
+
+          <div class="of-label-sm of-label-sm--mt">チームカラー</div>
+          <div class="color-row">
+            <label class="color-field">
+              <input type="color" id="f-colorMain" value="#1e5bd6">
+              <span class="color-field__meta"><span class="color-field__label">メインカラー</span><span class="color-field__val" id="colorMain-val">#1e5bd6</span></span>
+            </label>
+            <label class="color-field">
+              <input type="color" id="f-colorSub" value="#f2b705">
+              <span class="color-field__meta"><span class="color-field__label">サブカラー</span><span class="color-field__val" id="colorSub-val">#f2b705</span></span>
+            </label>
+          </div>
+
+          <div class="of-label-sm of-label-sm--mt">写真素材（複数可）</div>
+          <label class="upload-box upload-box--wide">
+            <span class="upload-box__icon">📷</span>
+            <span class="upload-box__title">クリックして写真を追加</span>
+            <span class="upload-box__hint">試合・練習・選手・施設などの写真をまとめて選べます</span>
+            <input type="file" accept="image/*" multiple id="f-photos" hidden>
+          </label>
+          <div class="photo-grid" id="photo-grid"></div>
+        </section>
+
+        <!-- STEP 4: コンテンツ・ご要望 -->
+        <section class="step-panel" data-step-panel="4">
+          <div class="of-h2-row"><span class="of-h2-bar"></span><h2 class="of-h2">コンテンツ・ご要望</h2></div>
+          <p class="of-desc">活動スケジュールや参考にしたいサイト、伝えたいことを教えてください。</p>
+
+          <div class="of-label-sm">活動スケジュール</div>
+          <div class="sched-list" id="sched-list"></div>
+          <button type="button" class="add-row-btn" id="add-sched">＋ 予定を追加</button>
+
+          <div class="of-label-sm of-label-sm--mt">参考にしたいサイト</div>
+          <div class="ref-list" id="ref-list"></div>
+          <button type="button" class="add-row-btn" id="add-ref">＋ URLを追加</button>
+
+          <div class="of-label-sm of-label-sm--mt">自由記述・ご要望</div>
+          <textarea class="field-input textarea" id="f-requests" placeholder="「トップに大きく試合写真を出したい」「明るく元気な印象にしたい」など、どんなことでもお書きください。"></textarea>
+        </section>
+
+        <!-- STEP 5: 確認 -->
+        <section class="step-panel" data-step-panel="5">
+          <div class="of-h2-row"><span class="of-h2-bar"></span><h2 class="of-h2">入力内容の確認</h2></div>
+          <p class="of-desc">内容をご確認ください。修正したい項目はステップ番号をタップすると戻れます。</p>
+
+          <div class="summary-card">
+            <div class="summary-head">
+              <div><div class="summary-head__label">選択プラン</div><div class="summary-head__plan" id="sum-planName">—</div></div>
+              <div class="summary-head__price-wrap"><div class="summary-head__price" id="sum-planPrice">—</div><div class="summary-head__pages" id="sum-planPages">—</div></div>
+            </div>
+            <div class="summary-rows" id="summary-rows"></div>
+            <div class="summary-attach">
+              <div class="summary-attach__label">添付素材</div>
+              <div class="summary-attach__val">
+                <span class="summary-attach__preview" id="sum-logo-preview"></span>
+                <span id="sum-attach-text">ロゴ なし・写真 0 枚</span>
+              </div>
+            </div>
+          </div>
+          <div class="summary-swatches">
+            <span class="swatch" id="sw-accent"></span><span class="swatch" id="sw-main"></span><span class="swatch" id="sw-sub"></span>
+            <span class="summary-note">送信後、内容をもとに制作チームからご連絡します。写真・ロゴの実データはメールまたはLINEで別途お送りください。</span>
+          </div>
+        </section>
+
+        <!-- フッターナビ -->
+        <div class="of-footer-nav">
+          <button type="button" class="btn-back" id="btn-prev">← 戻る</button>
+          <div class="of-footer-nav__right">
+            <span class="hint-text" id="hint-text" hidden></span>
+            <button type="button" class="btn-next" id="btn-next">次へ →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 完了画面 ===== -->
+    <div class="done-screen" id="done-screen" hidden>
+      <div class="done-icon">✓</div>
+      <h2 class="done-title">送信が完了しました</h2>
+      <p class="done-text"><span id="done-clubName">—</span> 様、ありがとうございます。<br>入力いただいた内容をもとに、制作チームより <b id="done-email">—</b> へご連絡します。</p>
+      <button type="button" class="btn-restart" id="btn-restart">もう一度入力する</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/order-form.js"></script>
+</body>
+</html>

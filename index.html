@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nofootball | サッカークラブ運営を、もっとシンプルに。</title>
+<meta name="description" content="サッカークラブ向けのホームページ制作とクラブ運営システム「Match Planner」をひとつに。試合結果を入力するだけでホームページ・SNS・記事が自動更新。無料相談受付中。">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="nofootball | サッカークラブ運営を、もっとシンプルに。">
+<meta property="og:description" content="サッカークラブ向けのホームページ制作とクラブ運営システムをひとつに。試合結果を入力するだけで、あとは全部つながる。">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a href="#top" class="nav__logo">
+      <span class="nav__logo-accent">no</span>football
+    </a>
+    <button type="button" class="btn btn--nav" data-open-modal="consult">無料相談</button>
+  </div>
+</header>
+
+<div class="hero-wrap">
+  <div class="hero-switcher">
+    <button type="button" class="pill" data-hero-btn="A">案A</button>
+    <button type="button" class="pill" data-hero-btn="B">案B</button>
+    <button type="button" class="pill" data-hero-btn="C">案C</button>
+  </div>
+
+  <section class="hero" data-hero="A">
+    <div class="hero__bg" role="img" aria-label="試合中の選手の写真（背景）"></div>
+    <div class="hero__gradient"></div>
+    <div class="hero__inner">
+      <div class="cbadge">
+        <span class="cbadge__tag">FIELD-BUILT</span>
+        <span class="cbadge__text"><span class="cbadge__dot"></span>現役ジュニアユース監督が、現場目線で開発。</span>
+      </div>
+      <div class="eyebrow">For Football Clubs</div>
+      <h1 class="hero__title">サッカークラブ運営を、<br>もっとシンプルに。</h1>
+      <p class="hero__text">ホームページ制作とクラブ運営システムを、ひとつに。<br>更新も、試合結果も、SNSも。スマホひとつで。</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn--primary" data-open-modal="consult">無料相談を申し込む</button>
+        <button type="button" class="btn btn--ghost" data-open-modal="demo">デモを見る</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero hero--split" data-hero="B" hidden>
+    <div class="hero-split__left">
+      <div class="cbadge cbadge--start">
+        <span class="cbadge__tag">FIELD-BUILT</span>
+        <span class="cbadge__text"><span class="cbadge__dot"></span>現役ジュニアユース監督が、現場目線で開発。</span>
+      </div>
+      <div class="eyebrow">Build &amp; Grow</div>
+      <h1 class="hero__title hero__title--split">ホームページは<br><span class="text-accent">「作る時代」</span>から<br>「育てる時代」へ。</h1>
+      <p class="hero__text">公開して終わりではなく、勝つたびに育っていくホームページを。制作とクラブ運営システムをひとつにしました。</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn--primary" data-open-modal="consult">無料相談を申し込む</button>
+        <button type="button" class="btn btn--ghost" data-open-modal="demo">デモを見る</button>
+      </div>
+    </div>
+    <div class="hero-split__right placeholder" role="img" aria-label="選手ポートレート（縦長写真）">
+      <span>［ 縦長写真 ］<br>選手ポートレート</span>
+    </div>
+  </section>
+
+  <section class="hero hero--center" data-hero="C" hidden>
+    <div class="hero__bg hero__bg--center" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner hero__inner--center">
+      <div class="cbadge">
+        <span class="cbadge__tag">FIELD-BUILT</span>
+        <span class="cbadge__text"><span class="cbadge__dot"></span>現役ジュニアユース監督が、現場目線で開発。</span>
+      </div>
+      <div class="eyebrow eyebrow--big">Build · Grow · Win</div>
+      <h1 class="hero__title">クラブの熱を、<br>そのまま届ける。</h1>
+      <p class="hero__text hero__text--center">ホームページ制作とクラブ運営システムを、ひとつに。<br>運営をもっと楽しく、もっと効率的に。</p>
+      <div class="btn-row btn-row--center">
+        <button type="button" class="btn btn--primary" data-open-modal="consult">無料相談を申し込む</button>
+        <button type="button" class="btn btn--ghost" data-open-modal="demo">デモを見る</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="eyebrow">The Problem</div>
+    <h2 class="heading">その運営、<br>ひとりで抱えていませんか。</h2>
+    <div class="grid grid--pains">
+      <div class="pain-card"><span class="pain-card__n">01</span><span class="pain-card__t">ホームページが古いまま、更新できていない</span></div>
+      <div class="pain-card"><span class="pain-card__n">02</span><span class="pain-card__t">試合結果を毎回つくるのが大変</span></div>
+      <div class="pain-card"><span class="pain-card__n">03</span><span class="pain-card__t">SNS投稿が面倒で続かない</span></div>
+      <div class="pain-card"><span class="pain-card__n">04</span><span class="pain-card__t">予定連絡がLINEやメールでバラバラ</span></div>
+      <div class="pain-card"><span class="pain-card__n">05</span><span class="pain-card__t">選手情報の管理が煩雑</span></div>
+      <div class="pain-card"><span class="pain-card__n">06</span><span class="pain-card__t">サイトが古く見え、印象が良くない</span></div>
+      <div class="pain-card"><span class="pain-card__n">07</span><span class="pain-card__t">保護者からの同じ問い合わせが多い</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light">
+  <div class="container container--center">
+    <div class="eyebrow">The Solution</div>
+    <h2 class="heading">ホームページ ＋ Match Planner で、<br>育成年代のクラブチーム経営に革命を。</h2>
+    <p class="lead">今までの常識を覆す。コーチがスマホでタップするだけ。</p>
+
+    <div class="flow">
+      <div class="flow__core">Match Planner</div>
+      <div class="flow__line"></div>
+      <div class="grid grid--connects">
+        <div class="connect-card"><div class="connect-card__en">WEBSITE</div><div class="connect-card__jp">ホームページ</div></div>
+        <div class="connect-card"><div class="connect-card__en">SNS</div><div class="connect-card__jp">SNS</div></div>
+        <div class="connect-card"><div class="connect-card__en">PARENTS</div><div class="connect-card__jp">保護者</div></div>
+        <div class="connect-card"><div class="connect-card__en">PLAYERS</div><div class="connect-card__jp">選手</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="container--center">
+      <div class="eyebrow">Match Planner</div>
+      <h2 class="heading">スマホで1分！入力するだけ。<br>あとは、自動ですべて完結。</h2>
+      <p class="lead lead--dark">1つの入力が、ホームページ・SNS・記事・スケジュールへ自動で波及します。</p>
+    </div>
+
+    <div class="grid grid--features">
+      <div class="feature-card"><span class="feature-card__n">01</span><span class="feature-card__t">試合結果入力</span></div>
+      <div class="feature-card"><span class="feature-card__n">02</span><span class="feature-card__t">ホームページ更新</span></div>
+      <div class="feature-card"><span class="feature-card__n">03</span><span class="feature-card__t">Instagram画像生成</span></div>
+      <div class="feature-card"><span class="feature-card__n">04</span><span class="feature-card__t">試合記事の作成</span></div>
+      <div class="feature-card"><span class="feature-card__n">05</span><span class="feature-card__t">スケジュール更新</span></div>
+      <div class="feature-card"><span class="feature-card__n">06</span><span class="feature-card__t">選手プロフィール更新</span></div>
+      <div class="feature-card"><span class="feature-card__n">07</span><span class="feature-card__t">スタッフ管理</span></div>
+      <div class="feature-card"><span class="feature-card__n">08</span><span class="feature-card__t">大会管理</span></div>
+      <div class="feature-card"><span class="feature-card__n">09</span><span class="feature-card__t">出場時間の集計</span></div>
+      <div class="feature-card"><span class="feature-card__n">10</span><span class="feature-card__t">得点ランキング</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light">
+  <div class="container">
+    <div class="website-grid">
+      <div>
+        <div class="eyebrow">Website</div>
+        <h2 class="heading">ホームページはクラブの顔</h2>
+        <p class="lead lead--left"><strong>更新しやすく、伝わりやすく、応援したくなるクラブへ。</strong></p>
+        <div class="page-tags">
+          <span class="page-tag">TOP</span>
+          <span class="page-tag">クラブ紹介</span>
+          <span class="page-tag">選手紹介</span>
+          <span class="page-tag">スタッフ紹介</span>
+          <span class="page-tag">試合結果</span>
+          <span class="page-tag">ニュース</span>
+          <span class="page-tag">スポンサー</span>
+          <span class="page-tag">お問い合わせ</span>
+        </div>
+      </div>
+      <div class="placeholder placeholder--website" role="img" aria-label="制作サイトの大きなビジュアル">
+        <span>［ 制作サイトの<br>大きなビジュアル ］</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section affordable">
+  <div class="affordable-glow" aria-hidden="true"></div>
+  <div class="container container--narrow">
+    <div class="eyebrow">Why So Affordable</div>
+    <h2 class="heading">クラブの未来に、お金を使ってほしい。</h2>
+    <p class="lead lead--left lead--wide lead--dark">
+      ホームページは必要だし、クラブの魅力をもっと伝えたい。でも高すぎる。<br>
+      その気持ち、痛いほど分かります。私たち自身が、サッカークラブを運営しているから。<br><br>
+      一般的な制作会社に頼めば、ホームページだけで50〜100万円。運営システムまで入れれば、到底手が届かない。<br>
+      その悩みを解消するために。時間をかけて気持ちを込めて！<br>
+      必要な機能を盛り込んで<span class="text-accent">破格の価格</span>で届けます。
+    </p>
+
+    <div class="affordable-grid">
+      <div class="affordable-card">
+        <div class="affordable-card__label">一般的な制作会社</div>
+        <div class="affordable-card__price affordable-card__price--strike">¥500,000〜</div>
+        <div class="affordable-card__desc">制作のみ。運営システムは別途費用がかかることも。</div>
+      </div>
+      <div class="affordable-card affordable-card--highlight">
+        <span class="affordable-card__tag">約1/5の価格</span>
+        <div class="affordable-card__label affordable-card__label--accent">nofootball</div>
+        <div class="affordable-card__price">¥100,000〜</div>
+        <div class="affordable-card__desc affordable-card__desc--light">ホームページ ＋ Match Planner 連携。運営まで、まるごと。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="container--center">
+      <div class="eyebrow">Plans</div>
+      <h2 class="heading">制作プラン</h2>
+    </div>
+    <div class="grid grid--plans">
+      <div class="plan-card">
+        <div class="plan-card__en">Light</div>
+        <div class="plan-card__name">ライト</div>
+        <div class="plan-card__price"><span class="plan-card__num">10</span><span class="plan-card__unit">万円</span></div>
+        <div class="plan-card__line"></div>
+        <p class="plan-card__desc">トップページ中心。まずはクラブの「顔」をつくる。</p>
+      </div>
+      <div class="plan-card plan-card--highlight">
+        <span class="plan-card__tag">人気</span>
+        <div class="plan-card__en">Standard</div>
+        <div class="plan-card__name">スタンダード</div>
+        <div class="plan-card__price"><span class="plan-card__num">20</span><span class="plan-card__unit">万円</span></div>
+        <div class="plan-card__line"></div>
+        <p class="plan-card__desc">クラブに必要なページ一式。紹介・選手・試合結果まで。</p>
+      </div>
+      <div class="plan-card">
+        <div class="plan-card__en">Premium</div>
+        <div class="plan-card__name">プレミアム</div>
+        <div class="plan-card__price"><span class="plan-card__num">30</span><span class="plan-card__unit">万円</span></div>
+        <div class="plan-card__line"></div>
+        <p class="plan-card__desc">オリジナルデザイン＋クラブ専用機能。世界観を、隅々まで。</p>
+      </div>
+    </div>
+    <p class="plan-note">※価格は税別・目安です。要件により変動します。</p>
+  </div>
+</section>
+
+<section class="section section--light">
+  <div class="container">
+    <div class="container--center">
+      <div class="eyebrow">Monthly</div>
+      <h2 class="heading">月額サポート</h2>
+      <p class="lead">作って終わりにしない。育て続けるためのプランです。</p>
+    </div>
+    <div class="grid grid--monthly">
+      <div class="monthly-card">
+        <div class="monthly-card__price"><span class="monthly-card__num">1</span><span class="monthly-card__unit">万円 / 月</span></div>
+        <div class="monthly-card__name">ベーシック</div>
+        <div class="monthly-card__items">
+          <div class="check-item"><span class="check-item__mark">✓</span><span>更新サポート</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>ニュース投稿代行</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>選手情報の更新</span></div>
+        </div>
+      </div>
+      <div class="monthly-card">
+        <div class="monthly-card__price"><span class="monthly-card__num">2</span><span class="monthly-card__unit">万円 / 月</span></div>
+        <div class="monthly-card__name">アクティブ</div>
+        <div class="monthly-card__items">
+          <div class="check-item"><span class="check-item__mark">✓</span><span>試合結果の反映</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>記事の自動生成</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>SNS画像の作成</span></div>
+        </div>
+      </div>
+      <div class="monthly-card">
+        <div class="monthly-card__price"><span class="monthly-card__num">3</span><span class="monthly-card__unit">万円 / 月</span></div>
+        <div class="monthly-card__name">フルサポート</div>
+        <div class="monthly-card__items">
+          <div class="check-item"><span class="check-item__mark">✓</span><span>Match Planner 全機能</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>運営支援</span></div>
+          <div class="check-item"><span class="check-item__mark">✓</span><span>優先サポート</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="container--center">
+      <div class="eyebrow">Samples</div>
+      <h2 class="heading">プラン別サンプル</h2>
+      <p class="lead lead--dark">プランごとの仕上がりイメージ。実際のページは順次追加していきます。</p>
+    </div>
+
+    <div class="plan-samples__tabs">
+      <button type="button" class="plan-samples__tab" data-sample-tab="L">ライト</button>
+      <button type="button" class="plan-samples__tab" data-sample-tab="S">スタンダード</button>
+      <button type="button" class="plan-samples__tab" data-sample-tab="P">プレミアム</button>
+    </div>
+
+    <div class="plan-samples__body">
+      <div class="plan-samples__head">
+        <div class="plan-samples__title">
+          <span class="plan-samples__name" data-sample-name></span>
+          <span class="plan-samples__price" data-sample-price></span>
+        </div>
+        <span class="plan-samples__badge">サンプル準備中</span>
+      </div>
+      <div class="plan-samples__grid">
+        <div class="plan-samples__browser">
+          <div class="plan-samples__browser-bar">
+            <span class="plan-samples__dot plan-samples__dot--red"></span>
+            <span class="plan-samples__dot plan-samples__dot--yellow"></span>
+            <span class="plan-samples__dot plan-samples__dot--green"></span>
+            <div class="plan-samples__url">yourclub.jp</div>
+          </div>
+          <div class="placeholder plan-samples__pc" role="img" aria-label="プランのPC表示イメージ">
+            <span data-sample-pc-label>［ ライト / PC ］</span>
+          </div>
+        </div>
+        <div class="placeholder plan-samples__mobile" role="img" aria-label="プランのスマホ表示イメージ">
+          <span>［ スマホ<br>表示 ］</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--accent">
+  <div class="container">
+    <div class="eyebrow eyebrow--on-accent">Benefits</div>
+    <h2 class="heading heading--on-accent">導入すると、こう変わる。</h2>
+    <div class="grid grid--benefits">
+      <div class="benefit-card">
+        <div class="benefit-card__num"><span class="benefit-card__big">1</span><span class="benefit-card__unit">分</span></div>
+        <div class="benefit-card__label">たった1分。試合後に現場のコーチが入力すれば完結。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num"><span class="benefit-card__big">90</span><span class="benefit-card__unit">%</span></div>
+        <div class="benefit-card__label">これまでかかっていた作業を90％削減。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num"><span class="benefit-card__big">24</span><span class="benefit-card__unit">時間</span></div>
+        <div class="benefit-card__label">いつでもどこでもスマホで更新。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__num"><span class="benefit-card__big">∞</span></div>
+        <div class="benefit-card__label">クラブとともに進化する。<br>現場の声を反映し、アップデートを続けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container container--narrow">
+    <div class="container--center">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="heading">よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-item__q">
+          <span>更新はスマホだけでできますか？</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">はい。試合結果もニュース投稿も、スマホから数分で完結します。パソコンは不要です。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-item__q">
+          <span>写真は自分たちで変更できますか？</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">はい。管理画面から、ドラッグ＆ドロップで簡単に差し替えられます。難しい操作は一切ありません。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-item__q">
+          <span>独自ドメインは使えますか？</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">はい。お持ちのドメインをそのまま利用できます。新規取得の代行も承ります。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-item__q">
+          <span>保守費用はいくらですか？</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">月額1万円〜のサポートプランからお選びいただけます。必要な範囲だけを選べます。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-item__q">
+          <span>途中でプランを変更できますか？</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">いつでも変更可能です。クラブの成長に合わせて、機能やサポート範囲を調整できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cta">
+  <div class="cta-glow"></div>
+  <div class="container container--narrow container--center">
+    <h2 class="cta-title">まずは、<br>無料相談から。</h2>
+    <p class="lead lead--dark">サッカークラブ運営を、もっと楽しく、もっと効率的に。</p>
+    <div class="btn-row btn-row--center">
+      <button type="button" class="btn btn--primary btn--big" data-open-modal="consult">無料相談申し込む</button>
+      <button type="button" class="btn btn--ghost btn--big" data-open-modal="demo">デモを見る</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="nav__logo"><span class="nav__logo-accent">no</span>football</div>
+      <div class="footer__desc">合同会社nofootball　・サッカークラブのためのホームページ制作 &amp; 運営システム<br>　　　　　　　　　　・フットボールアパレル<br>　　　　　　　　　　・育成年代サッカークラブの運営</div>
+    </div>
+    <button type="button" class="btn btn--nav" data-open-modal="consult">お問い合わせ</button>
+  </div>
+  <div class="footer__copyright">© 2026 nofootball LLC. All rights reserved.</div>
+</footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__header">
+      <div class="modal__tabs">
+        <button type="button" class="modal__tab" data-tab="consult">無料相談</button>
+        <button type="button" class="modal__tab" data-tab="demo">デモを見る</button>
+      </div>
+      <button type="button" class="modal__close" data-close-modal aria-label="閉じる">×</button>
+    </div>
+
+    <div class="modal__done" hidden>
+      <div class="modal__done-icon">✓</div>
+      <h3 class="modal__done-title">送信しました。</h3>
+      <p class="modal__done-text">担当者より2営業日以内にご連絡いたします。<br>ありがとうございます。</p>
+      <button type="button" class="btn btn--primary btn--full" data-close-modal>閉じる</button>
+    </div>
+
+    <div class="modal__form-wrap">
+      <div class="modal__demo-preview" hidden role="img" aria-label="デモ動画・画面キャプチャ">
+        <span>［ デモ動画 / 画面キャプチャ ］</span>
+      </div>
+      <p class="modal__demo-text" hidden>Match Planner の操作画面をご案内します。日程を送るだけで、あとはこちらでデモをご用意します。</p>
+
+      <form class="modal__form" id="lead-form" novalidate>
+        <input class="input" type="text" name="name" placeholder="お名前" required>
+        <input class="input" type="text" name="club" placeholder="クラブ名" required>
+        <input class="input" type="email" name="email" placeholder="メールアドレス" required>
+        <input class="input" type="tel" name="phone" placeholder="電話番号（任意）">
+        <textarea class="input input--area" name="message" placeholder="ご相談内容（任意）"></textarea>
+        <button type="submit" class="btn btn--primary btn--full">この内容で相談する</button>
+      </form>
+      <p class="modal__privacy">送信いただいた内容は、ご連絡以外の目的には使用いたしません。</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

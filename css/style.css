@@ -600,6 +600,9 @@ img { max-width: 100%; display: block; }
   color: #4a4a4a;
   font: 500 11px ui-monospace, monospace;
 }
+.plan-samples__badge--live { border-color: var(--color-accent); color: var(--color-accent); }
+.plan-samples__cta { margin-top: 22px; text-align: center; }
+.plan-samples__cta-text { color: rgba(255, 255, 255, .6); font-size: 13px; margin: 0 0 14px; }
 
 /* ===== benefits ===== */
 .grid--benefits { grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 52px; }

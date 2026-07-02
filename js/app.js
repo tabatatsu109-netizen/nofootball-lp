@@ -82,22 +82,28 @@ heroButtons.forEach((btn) => {
 setHero('A');
 
 const sampleData = {
-  L: { name: 'ライトプラン', price: '10万円〜' },
-  S: { name: 'スタンダードプラン', price: '20万円〜' },
-  P: { name: 'プレミアムプラン', price: '30万円〜' },
+  L: { name: 'ライトプラン', price: '10万円〜', badge: 'サンプル公開中' },
+  S: { name: 'スタンダードプラン', price: '20万円〜', badge: 'サンプル準備中' },
+  P: { name: 'プレミアムプラン', price: '30万円〜', badge: 'サンプル準備中' },
 };
 const sampleTabs = document.querySelectorAll('[data-sample-tab]');
 const sampleNameEl = document.querySelector('[data-sample-name]');
 const samplePriceEl = document.querySelector('[data-sample-price]');
 const samplePcLabelEl = document.querySelector('[data-sample-pc-label]');
+const sampleBadgeEl = document.querySelector('[data-sample-badge]');
+const sampleCtaEl = document.querySelector('[data-sample-cta]');
 
 function setSampleTab(key) {
   sampleTabs.forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.sampleTab === key);
   });
-  sampleNameEl.textContent = sampleData[key].name;
-  samplePriceEl.textContent = sampleData[key].price;
-  samplePcLabelEl.textContent = `［ ${sampleData[key].name} / PC ］`;
+  const data = sampleData[key];
+  sampleNameEl.textContent = data.name;
+  samplePriceEl.textContent = data.price;
+  samplePcLabelEl.textContent = `［ ${data.name} / PC ］`;
+  sampleBadgeEl.textContent = data.badge;
+  sampleBadgeEl.classList.toggle('plan-samples__badge--live', key === 'L');
+  sampleCtaEl.hidden = key !== 'L';
 }
 
 sampleTabs.forEach((btn) => {

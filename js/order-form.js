@@ -8,6 +8,12 @@ const PLANS = [
   { id: 'standard', name: 'スタンダード', price: '200,000', pageCount: 5,  pages: ['トップページ', '選手プロフィール', 'クラブ紹介', '活動スケジュール', 'お問い合わせ'] },
   { id: 'premium',  name: 'プレミアム',   price: '300,000', pageCount: 10, pages: ['トップ / 選手 / クラブ紹介', '活動スケジュール / お問い合わせ', '試合結果 / スタッフ紹介', 'フォトギャラリー / スポンサー', 'よくある質問（FAQ）'] },
 ];
+
+const MONTHLY_PLANS = [
+  { id: 'm-light',    name: 'ライト',      price: '10,000', seats: 1, items: ['Match Planner 利用 1人', '試合結果・選手情報のHP自動反映', 'HP修正対応 月1回', 'メールサポート'] },
+  { id: 'm-standard', name: 'スタンダード', price: '20,000', seats: 3, items: ['Match Planner 利用 3人', '試合結果・選手情報のHP自動反映', 'ニュース投稿代行 月3回', 'HP修正対応 月3回・LINEサポート'] },
+  { id: 'm-premium',  name: 'プレミアム',   price: '30,000', seats: 5, items: ['Match Planner 利用 5人', 'アイテムショップ標準搭載', 'ニュース投稿代行 実質無制限', 'HP修正 優先対応・LINE優先サポート'] },
+];
 const STEP_LABELS = ['プラン', '基本情報', '素材', '要望', '確認'];
 const THEME_ACCENT = { midnight: '#38bdf8', blaze: '#ff5b2e', turf: '#8ee63f' };
 
@@ -17,6 +23,7 @@ const state = {
   done: false,
   submitting: false,
   plan: null,
+  monthly: null,
   logo: null,       // { name, url }
   photos: [],       // [{ id, name, url }]
   schedule: [{ day: '', time: '', activity: '' }],
@@ -108,8 +115,43 @@ function renderPlans() {
   updatePlanSelection();
 }
 function updatePlanSelection() {
-  document.querySelectorAll('.plan-card').forEach((card) => {
+  document.querySelectorAll('#plan-grid .plan-card').forEach((card) => {
     card.classList.toggle('is-selected', state.plan && card.dataset.planId === state.plan.id);
+  });
+}
+
+function renderMonthlyPlans() {
+  const grid = $('#monthly-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  MONTHLY_PLANS.forEach((p) => {
+    const card = el('button', 'plan-card');
+    card.type = 'button';
+    card.dataset.monthlyId = p.id;
+    card.innerHTML = `
+      <div class="plan-card__head">
+        <div class="plan-card__head-row">
+          <span class="plan-card__name">${p.name}</span>
+          <span class="plan-card__check">✓</span>
+        </div>
+        <div class="plan-card__price">${p.price}<span class="plan-card__price-unit"> 円/月</span></div>
+        <div class="plan-card__pagecount">Match Planner ${p.seats}人まで</div>
+      </div>
+      <div class="plan-card__body">
+        ${p.items.map((it) => `<div class="plan-card__page-item">${it}</div>`).join('')}
+      </div>`;
+    card.addEventListener('click', () => {
+      state.monthly = p;
+      updateMonthlySelection();
+      updateNextState();
+    });
+    grid.appendChild(card);
+  });
+  updateMonthlySelection();
+}
+function updateMonthlySelection() {
+  document.querySelectorAll('#monthly-grid .plan-card').forEach((card) => {
+    card.classList.toggle('is-selected', state.monthly && card.dataset.monthlyId === state.monthly.id);
   });
 }
 
@@ -235,6 +277,7 @@ function renderSummary() {
   const refText = state.refs.filter((r) => r.trim()).join('  /  ');
 
   const rows = [
+    ['月額プラン', state.monthly ? `${state.monthly.name}（${state.monthly.price} 円/月・Match Planner ${state.monthly.seats}人）` : ''],
     ['クラブ名', dash(fieldVal('f-clubName'))],
     ['競技・種目', dash(fieldVal('f-sport'))],
     ['設立年', dash(fieldVal('f-founded'))],
@@ -264,7 +307,7 @@ function renderSummary() {
 
 /* ===== ステップ遷移 ===== */
 function canProceed() {
-  if (state.step === 1) return !!state.plan;
+  if (state.step === 1) return !!state.plan && !!state.monthly;
   if (state.step === 2) {
     const name = fieldVal('f-clubName').trim();
     const email = fieldVal('f-email');
@@ -272,7 +315,7 @@ function canProceed() {
   }
   return true;
 }
-const HINTS = { 1: 'プランを選択してください', 2: 'クラブ名とメールは必須です' };
+const HINTS = { 1: '制作プランと月額サポートプランを選択してください', 2: 'クラブ名とメールは必須です' };
 
 function updateNextState() {
   const ok = canProceed();
@@ -328,6 +371,7 @@ async function submit() {
 
   const payload = {
     plan: state.plan ? { id: state.plan.id, name: state.plan.name, price: state.plan.price, pageCount: state.plan.pageCount } : null,
+    monthly: state.monthly ? { id: state.monthly.id, name: state.monthly.name, price: state.monthly.price, seats: state.monthly.seats } : null,
     clubName: fieldVal('f-clubName'),
     sport: fieldVal('f-sport'),
     founded: fieldVal('f-founded'),
@@ -379,6 +423,7 @@ function restart() {
   state.submitting = false;
   state.step = 1;
   state.plan = null;
+  state.monthly = null;
   if (state.logo && state.logo.url) URL.revokeObjectURL(state.logo.url);
   state.logo = null;
   state.photos.forEach((p) => URL.revokeObjectURL(p.url));
@@ -391,6 +436,7 @@ function restart() {
   $('#f-colorSub').value = '#f2b705'; $('#colorSub-val').textContent = '#f2b705';
 
   renderPlans();
+  renderMonthlyPlans();
   renderLogo();
   renderPhotos();
   renderSchedule();
@@ -406,6 +452,7 @@ function init() {
   initTheme();
   renderStepsNav();
   renderPlans();
+  renderMonthlyPlans();
   initStep2();
   initStep3();
   renderSchedule();

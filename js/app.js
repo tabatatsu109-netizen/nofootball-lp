@@ -94,6 +94,7 @@ const sampleBadgeEl = document.querySelector('[data-sample-badge]');
 const sampleCtaEl = document.querySelector('[data-sample-cta]');
 
 function setSampleTab(key) {
+  if (!sampleNameEl) return; // このセクションが無いページ（例: works/*.html）では何もしない
   sampleTabs.forEach((btn) => {
     btn.classList.toggle('is-active', btn.dataset.sampleTab === key);
   });

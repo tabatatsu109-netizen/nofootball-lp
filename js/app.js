@@ -81,36 +81,44 @@ heroButtons.forEach((btn) => {
 });
 setHero('A');
 
-const sampleData = {
-  L: { name: 'ライトプラン', price: '10万円〜', badge: 'サンプル公開中' },
-  S: { name: 'スタンダードプラン', price: '20万円〜', badge: 'サンプル準備中' },
-  P: { name: 'プレミアムプラン', price: '30万円〜', badge: 'サンプル準備中' },
-};
-const sampleTabs = document.querySelectorAll('[data-sample-tab]');
-const sampleNameEl = document.querySelector('[data-sample-name]');
-const samplePriceEl = document.querySelector('[data-sample-price]');
-const samplePcLabelEl = document.querySelector('[data-sample-pc-label]');
-const sampleBadgeEl = document.querySelector('[data-sample-badge]');
-const sampleCtaEl = document.querySelector('[data-sample-cta]');
+const planCards = document.querySelectorAll('[data-plan-toggle]');
+const planDetail = document.getElementById('plan-detail');
+const planPanels = document.querySelectorAll('[data-plan-panel]');
 
-function setSampleTab(key) {
-  if (!sampleNameEl) return; // このセクションが無いページ（例: works/*.html）では何もしない
-  sampleTabs.forEach((btn) => {
-    btn.classList.toggle('is-active', btn.dataset.sampleTab === key);
+function togglePlanDetail(key) {
+  if (!planDetail) return; // このセクションが無いページでは何もしない
+  const isOpen = !planDetail.hidden && planDetail.dataset.openPlan === key;
+
+  if (isOpen) {
+    planDetail.hidden = true;
+    planDetail.dataset.openPlan = '';
+    planCards.forEach((c) => {
+      c.classList.remove('is-active');
+      c.setAttribute('aria-expanded', 'false');
+    });
+    return;
+  }
+
+  planPanels.forEach((p) => { p.hidden = p.dataset.planPanel !== key; });
+  planDetail.hidden = false;
+  planDetail.dataset.openPlan = key;
+  planCards.forEach((c) => {
+    const active = c.dataset.planToggle === key;
+    c.classList.toggle('is-active', active);
+    c.setAttribute('aria-expanded', String(active));
   });
-  const data = sampleData[key];
-  sampleNameEl.textContent = data.name;
-  samplePriceEl.textContent = data.price;
-  samplePcLabelEl.textContent = `［ ${data.name} / PC ］`;
-  sampleBadgeEl.textContent = data.badge;
-  sampleBadgeEl.classList.toggle('plan-samples__badge--live', key === 'L');
-  sampleCtaEl.hidden = key !== 'L';
+  planDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-sampleTabs.forEach((btn) => {
-  btn.addEventListener('click', () => setSampleTab(btn.dataset.sampleTab));
+planCards.forEach((card) => {
+  card.addEventListener('click', () => togglePlanDetail(card.dataset.planToggle));
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      togglePlanDetail(card.dataset.planToggle);
+    }
+  });
 });
-setSampleTab('S');
 
 document.querySelectorAll('.faq-item').forEach((item) => {
   const question = item.querySelector('.faq-item__q');

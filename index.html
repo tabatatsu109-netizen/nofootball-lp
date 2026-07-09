@@ -150,31 +150,6 @@
   </div>
 </section>
 
-<section class="section section--light">
-  <div class="container">
-    <div class="website-grid">
-      <div>
-        <div class="eyebrow">Website</div>
-        <h2 class="heading">ホームページはクラブの顔</h2>
-        <p class="lead lead--left"><strong>更新しやすく、伝わりやすく、応援したくなるクラブへ。</strong></p>
-        <div class="page-tags">
-          <span class="page-tag">TOP</span>
-          <span class="page-tag">クラブ紹介</span>
-          <span class="page-tag">選手紹介</span>
-          <span class="page-tag">スタッフ紹介</span>
-          <span class="page-tag">試合結果</span>
-          <span class="page-tag">ニュース</span>
-          <span class="page-tag">スポンサー</span>
-          <span class="page-tag">お問い合わせ</span>
-        </div>
-      </div>
-      <div class="placeholder placeholder--website" role="img" aria-label="制作サイトの大きなビジュアル">
-        <span>［ 制作サイトの<br>大きなビジュアル ］</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section affordable">
   <div class="affordable-glow" aria-hidden="true"></div>
   <div class="container container--narrow">
@@ -211,27 +186,89 @@
       <h2 class="heading">制作プラン</h2>
     </div>
     <div class="grid grid--plans">
-      <div class="plan-card">
+      <div class="plan-card" data-plan-toggle="light" role="button" tabindex="0" aria-expanded="false">
         <div class="plan-card__en">Light</div>
         <div class="plan-card__name">ライト</div>
         <div class="plan-card__price"><span class="plan-card__num">10</span><span class="plan-card__unit">万円</span></div>
         <div class="plan-card__line"></div>
-        <p class="plan-card__desc">トップページ中心。まずはクラブの「顔」をつくる。</p>
+        <p class="plan-card__desc">単一ページで必要な情報をコンパクトに。選べるコンテンツで自由に組み立て。</p>
+        <span class="plan-card__more">構成を見る <span class="plan-card__more-icon">＋</span></span>
       </div>
-      <div class="plan-card plan-card--highlight">
+      <div class="plan-card plan-card--highlight" data-plan-toggle="standard" role="button" tabindex="0" aria-expanded="false">
         <span class="plan-card__tag">人気</span>
         <div class="plan-card__en">Standard</div>
         <div class="plan-card__name">スタンダード</div>
         <div class="plan-card__price"><span class="plan-card__num">20</span><span class="plan-card__unit">万円</span></div>
         <div class="plan-card__line"></div>
         <p class="plan-card__desc">クラブに必要なページ一式。紹介・選手・試合結果まで。</p>
+        <span class="plan-card__more">構成を見る <span class="plan-card__more-icon">＋</span></span>
       </div>
-      <div class="plan-card">
+      <div class="plan-card" data-plan-toggle="premium" role="button" tabindex="0" aria-expanded="false">
         <div class="plan-card__en">Premium</div>
         <div class="plan-card__name">プレミアム</div>
         <div class="plan-card__price"><span class="plan-card__num">30</span><span class="plan-card__unit">万円</span></div>
         <div class="plan-card__line"></div>
         <p class="plan-card__desc">オリジナルデザイン＋クラブ専用機能。世界観を、隅々まで。</p>
+        <span class="plan-card__more">構成を見る <span class="plan-card__more-icon">＋</span></span>
+      </div>
+    </div>
+
+    <!-- プラン構成の詳細（カードクリックで展開） -->
+    <div class="plan-detail" id="plan-detail" hidden>
+      <div class="plan-detail__panel" data-plan-panel="light" hidden>
+        <div class="plan-detail__head">
+          <span class="plan-detail__badge">LIGHT PLAN の構成</span>
+          <div class="plan-detail__title">単一ページに、必要な情報をコンパクトに。</div>
+        </div>
+        <div class="plan-detail__grid">
+          <div class="plan-detail__col">
+            <div class="plan-detail__label">標準搭載項目</div>
+            <ul class="plan-detail__list">
+              <li>最新ニュース <span class="plan-detail__chip-tag">Match Planner連携</span></li>
+              <li>試合告知 <span class="plan-detail__chip-tag">Match Planner連携</span></li>
+              <li>試合結果 <span class="plan-detail__chip-tag">Match Planner連携</span></li>
+              <li>フッター</li>
+            </ul>
+          </div>
+          <div class="plan-detail__col plan-detail__col--wide">
+            <div class="plan-detail__label">選べるコンテンツ <span class="plan-detail__label-note">（下記から8項目まで）</span></div>
+            <div class="plan-detail__chips">
+              <span class="plan-detail__chip">クラブ紹介</span>
+              <span class="plan-detail__chip">クラブ理念</span>
+              <span class="plan-detail__chip">指導方針</span>
+              <span class="plan-detail__chip">スタッフ紹介</span>
+              <span class="plan-detail__chip">活動カテゴリー（ジュニア・ジュニアユース・スクールなど）</span>
+              <span class="plan-detail__chip">入会案内・選手募集</span>
+              <span class="plan-detail__chip">会費</span>
+              <span class="plan-detail__chip">スポンサー紹介</span>
+              <span class="plan-detail__chip">卒団生進路</span>
+              <span class="plan-detail__chip">ギャラリー（数枚）</span>
+              <span class="plan-detail__chip">アクセス</span>
+              <span class="plan-detail__chip">お問い合わせ</span>
+              <span class="plan-detail__chip">FAQ</span>
+              <span class="plan-detail__chip">SNS紹介</span>
+              <span class="plan-detail__chip">動画</span>
+            </div>
+          </div>
+        </div>
+        <div class="plan-detail__cta">
+          <p class="plan-detail__cta-text">欧州クラブ風・地域クラブ風・近未来風の3案をタブで見比べられます。</p>
+          <a class="btn btn--primary" href="demo/light-plan.html" target="_blank" rel="noopener">実際のデザインを見る（A/B/C 3案）→</a>
+        </div>
+      </div>
+      <div class="plan-detail__panel" data-plan-panel="standard" hidden>
+        <div class="plan-detail__head">
+          <span class="plan-detail__badge">STANDARD PLAN の構成</span>
+          <div class="plan-detail__title">クラブに必要なページ一式を、まるごと。</div>
+        </div>
+        <p class="plan-detail__preparing">構成の詳細・サンプルは準備中です。公開まで今しばらくお待ちください。</p>
+      </div>
+      <div class="plan-detail__panel" data-plan-panel="premium" hidden>
+        <div class="plan-detail__head">
+          <span class="plan-detail__badge">PREMIUM PLAN の構成</span>
+          <div class="plan-detail__title">世界観を、隅々まで。クラブ専用機能も。</div>
+        </div>
+        <p class="plan-detail__preparing">構成の詳細・サンプルは準備中です。公開まで今しばらくお待ちください。</p>
       </div>
     </div>
 
@@ -268,89 +305,80 @@
       <h2 class="heading">月額サポート</h2>
       <p class="lead">作って終わりにしない。育て続けるためのプランです。</p>
     </div>
-    <div class="grid grid--monthly">
-      <div class="monthly-card">
-        <div class="monthly-card__price"><span class="monthly-card__num">1</span><span class="monthly-card__unit">万円 / 月</span></div>
-        <div class="monthly-card__name">ライト</div>
-        <div class="monthly-card__items">
-          <div class="check-item"><span class="check-item__mark">✓</span><span><b>Match Planner 利用 1人</b></span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>試合結果・選手情報のHP自動反映</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>HP修正対応 月1回</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>メールサポート</span></div>
-        </div>
-      </div>
-      <div class="monthly-card">
-        <div class="monthly-card__price"><span class="monthly-card__num">2</span><span class="monthly-card__unit">万円 / 月</span></div>
-        <div class="monthly-card__name">スタンダード ⭐人気</div>
-        <div class="monthly-card__items">
-          <div class="check-item"><span class="check-item__mark">✓</span><span><b>Match Planner 利用 3人</b></span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>試合結果・選手情報のHP自動反映</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>ニュース投稿代行 月3回</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>HP修正対応 月3回・LINEサポート</span></div>
-        </div>
-      </div>
-      <div class="monthly-card">
-        <div class="monthly-card__price"><span class="monthly-card__num">3</span><span class="monthly-card__unit">万円 / 月</span></div>
-        <div class="monthly-card__name">プレミアム</div>
-        <div class="monthly-card__items">
-          <div class="check-item"><span class="check-item__mark">✓</span><span><b>Match Planner 利用 5人</b></span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span><b>アイテムショップ標準搭載</b>（ユニフォーム等の注文受付）</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>ニュース投稿代行 実質無制限（月10回目安）</span></div>
-          <div class="check-item"><span class="check-item__mark">✓</span><span>HP修正 優先対応・LINE優先サポート</span></div>
-        </div>
+    <div class="plan-compare">
+      <div class="plan-compare__scroll">
+        <table class="plan-compare__table">
+          <thead>
+            <tr>
+              <th class="plan-compare__feature-col">機能</th>
+              <th><span class="plan-compare__name">ライト</span><span class="plan-compare__price">1万円 / 月</span></th>
+              <th class="plan-compare__col--popular"><span class="plan-compare__badge">⭐ 人気</span><span class="plan-compare__name">スタンダード</span><span class="plan-compare__price">2万円 / 月</span></th>
+              <th><span class="plan-compare__name">プレミアム</span><span class="plan-compare__price">3万円 / 月〜</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Match Planner 利用人数</td>
+              <td>1名</td>
+              <td class="plan-compare__col--popular">3名</td>
+              <td>5名〜<sup>※1</sup></td>
+            </tr>
+            <tr>
+              <td>試合告知</td>
+              <td class="plan-compare__check">✓</td>
+              <td class="plan-compare__col--popular plan-compare__check">✓</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>試合結果報告</td>
+              <td class="plan-compare__check">✓</td>
+              <td class="plan-compare__col--popular plan-compare__check">✓</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>選手プロフィール管理</td>
+              <td class="plan-compare__check">✓</td>
+              <td class="plan-compare__col--popular plan-compare__check">✓</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>SNS投稿画像の自動生成</td>
+              <td class="plan-compare__dash">—</td>
+              <td class="plan-compare__col--popular plan-compare__check">✓</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>アンケート機能</td>
+              <td class="plan-compare__dash">—</td>
+              <td class="plan-compare__col--popular plan-compare__check">✓</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>アイテムショップ</td>
+              <td class="plan-compare__dash">—</td>
+              <td class="plan-compare__col--popular plan-compare__dash">—</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+            <tr>
+              <td>3D戦術ボード（GRANDE TACTICS BOARD）<sup>※2</sup></td>
+              <td class="plan-compare__dash">—</td>
+              <td class="plan-compare__col--popular plan-compare__dash">—</td>
+              <td class="plan-compare__check">✓</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <p class="plan-note plan-note--light">
-      ※「利用人数」は Match Planner に入力できる人数です（1人が複数端末で使うのは1人分）。追加1人 ＋5,000円/月・コーチの交代は無料。<br>
+      ※1 Match Plannerは追加1人 ＋5,000円/月で増やせます（コーチの交代は無料）。<br>
+      ※2 3D戦術ボードは提携する別サービス「GRANDE TACTICS BOARD」の利用権です（選手名簿と連携したフォーメーション確認ツール）。<br>
       ※ 解約後もホームページは残ります（自動更新・サポートのみ停止）。<br>
       ※ アイテムショップは注文の取りまとめ機能です（オンライン決済機能はありません。現金・振込・PayPay等での受け渡しを管理できます）。<br>
       ※ カスタマイズプランの月額サポートは内容により個別見積もり（プレミアム相当〜）です。
     </p>
-  </div>
-</section>
-
-<section class="section section--dark">
-  <div class="container">
-    <div class="container--center">
-      <div class="eyebrow">Samples</div>
-      <h2 class="heading">プラン別サンプル</h2>
-      <p class="lead lead--dark">プランごとの仕上がりイメージ。実際のページは順次追加していきます。</p>
-    </div>
-
-    <div class="plan-samples__tabs">
-      <button type="button" class="plan-samples__tab" data-sample-tab="L">ライト</button>
-      <button type="button" class="plan-samples__tab" data-sample-tab="S">スタンダード</button>
-      <button type="button" class="plan-samples__tab" data-sample-tab="P">プレミアム</button>
-    </div>
-
-    <div class="plan-samples__body">
-      <div class="plan-samples__head">
-        <div class="plan-samples__title">
-          <span class="plan-samples__name" data-sample-name></span>
-          <span class="plan-samples__price" data-sample-price></span>
-        </div>
-        <span class="plan-samples__badge" data-sample-badge>サンプル準備中</span>
-      </div>
-      <div class="plan-samples__grid">
-        <div class="plan-samples__browser">
-          <div class="plan-samples__browser-bar">
-            <span class="plan-samples__dot plan-samples__dot--red"></span>
-            <span class="plan-samples__dot plan-samples__dot--yellow"></span>
-            <span class="plan-samples__dot plan-samples__dot--green"></span>
-            <div class="plan-samples__url">yourclub.jp</div>
-          </div>
-          <div class="placeholder plan-samples__pc" role="img" aria-label="プランのPC表示イメージ">
-            <span data-sample-pc-label>［ ライト / PC ］</span>
-          </div>
-        </div>
-        <div class="placeholder plan-samples__mobile" role="img" aria-label="プランのスマホ表示イメージ">
-          <span>［ スマホ<br>表示 ］</span>
-        </div>
-      </div>
-      <div class="plan-samples__cta" data-sample-cta hidden>
-        <p class="plan-samples__cta-text">欧州クラブ風・地域クラブ風・近未来風の3案をタブで見比べられます。</p>
-        <a class="btn btn--primary" href="demo/light-plan.html" target="_blank" rel="noopener">実際のデザインを見る（A/B/C 3案）→</a>
-      </div>
+    <div class="demo-plan-cta">
+      <a href="demo/index.html" class="btn btn--gold btn--big">実際に触って試してみる →</a>
+      <p class="case-hero__note" style="margin-top:14px">登録不要・この端末にのみ保存されるデモ環境です</p>
     </div>
   </div>
 </section>

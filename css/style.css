@@ -440,13 +440,25 @@ img { max-width: 100%; display: block; }
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   transition: transform .35s cubic-bezier(.2, .7, .2, 1), border-color .35s;
+  cursor: pointer;
 }
 .plan-card:hover { transform: translateY(-6px); border-color: var(--color-accent); }
+.plan-card.is-active { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
 .plan-card--highlight {
   background: #fff;
   border: 1px solid var(--color-accent);
   box-shadow: 0 24px 60px rgba(31, 157, 84, .2);
 }
+.plan-card--highlight.is-active { box-shadow: 0 24px 60px rgba(31, 157, 84, .2), 0 0 0 1px var(--color-accent); }
+.plan-card__more {
+  display: flex; align-items: center; gap: 6px;
+  margin-top: 20px;
+  color: var(--color-accent);
+  font-weight: 700; font-size: 13px;
+}
+.plan-card--highlight .plan-card__more { color: var(--color-accent-hover); }
+.plan-card__more-icon { transition: transform .25s; font-weight: 900; }
+.plan-card.is-active .plan-card__more-icon { transform: rotate(45deg); }
 .plan-card__tag {
   position: absolute;
   top: 18px;
@@ -473,6 +485,52 @@ img { max-width: 100%; display: block; }
 .plan-card--highlight .plan-card__desc { color: #555; }
 .plan-note { text-align: center; color: rgba(255, 255, 255, .4); font-size: 13px; margin-top: 24px; }
 .plan-note--light { color: #888; line-height: 1.9; }
+
+/* ===== プラン構成の詳細（カードクリックで展開） ===== */
+.plan-detail {
+  margin-top: 26px;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 32px 34px;
+  animation: fadeup .4s both;
+}
+.plan-detail__head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+.plan-detail__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-size: 11px; letter-spacing: .14em;
+  color: #062012;
+  background: var(--color-accent);
+  padding: 5px 14px; border-radius: 999px;
+}
+.plan-detail__title { color: #fff; font-weight: 900; font-size: 19px; }
+.plan-detail__grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.plan-detail__label { color: var(--color-accent); font-weight: 700; font-size: 13px; letter-spacing: .04em; margin-bottom: 14px; }
+.plan-detail__label-note { color: rgba(255, 255, 255, .4); font-weight: 500; font-size: 12px; }
+.plan-detail__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.plan-detail__list li {
+  color: #fff; font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.plan-detail__list li::before { content: '✓'; color: var(--color-accent); font-weight: 900; }
+.plan-detail__chip-tag {
+  font-size: 10.5px; font-weight: 700; color: rgba(255, 255, 255, .55);
+  border: 1px solid var(--color-border-strong); border-radius: 999px;
+  padding: 2px 9px;
+}
+.plan-detail__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.plan-detail__chip {
+  font-size: 12.5px; font-weight: 600; color: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+.plan-detail__preparing { color: rgba(255, 255, 255, .5); font-size: 14px; line-height: 1.8; }
+.plan-detail__cta { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--color-border); text-align: center; }
+.plan-detail__cta-text { color: rgba(255, 255, 255, .6); font-size: 13px; margin: 0 0 14px; }
 
 /* ===== custom plan（別格枠） ===== */
 .custom-card {
@@ -865,6 +923,7 @@ img { max-width: 100%; display: block; }
   .grid--features { grid-template-columns: repeat(2, 1fr); }
   .grid--connects { grid-template-columns: repeat(4, 1fr); }
   .grid--plans { grid-template-columns: repeat(3, 1fr); }
+  .plan-detail__grid { grid-template-columns: 220px 1fr; }
   .grid--monthly { grid-template-columns: repeat(3, 1fr); }
   .website-grid { grid-template-columns: 1fr 1fr; }
   .works-grid { grid-template-columns: 2fr 1fr; }
@@ -1036,3 +1095,127 @@ img { max-width: 100%; display: block; }
 @media (min-width: 1024px) {
   .case-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ================================================
+   体験デモ（demo/index.html・月額プランCTA）
+   ================================================ */
+.demo-notice {
+  background: rgba(31, 157, 84, .08);
+  border: 1px solid rgba(31, 157, 84, .3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: var(--color-text-sub);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+.demo-select-grid { grid-template-columns: 1fr; gap: 18px; }
+
+.demo-select-card {
+  display: block;
+  position: relative;
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 30px 26px;
+  text-decoration: none;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.demo-select-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .3);
+}
+.demo-select-card--gold:hover {
+  border-color: #c9a227;
+  box-shadow: 0 12px 32px rgba(201, 162, 39, .2);
+}
+.demo-select-card__icon { font-size: 34px; margin-bottom: 12px; }
+.demo-select-card__name {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: .04em;
+  margin: 10px 0 10px;
+}
+.demo-select-card__desc { color: var(--color-text-sub); font-size: 13.5px; line-height: 1.8; margin-bottom: 18px; }
+.demo-select-card__cta { color: var(--color-accent); font-weight: 700; font-size: 14px; }
+.demo-select-card--gold .demo-select-card__cta { color: #e8c766; }
+
+.demo-plan-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 999px;
+  letter-spacing: .02em;
+}
+.demo-plan-badge--all { background: rgba(31, 157, 84, .16); color: #4fd189; }
+.demo-plan-badge--premium { background: linear-gradient(120deg, #e8c766, #c9a227); color: #0d0d0f; }
+
+.demo-plan-cta { margin-top: 40px; text-align: center; }
+
+@media (min-width: 768px) {
+  .demo-select-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ================================================
+   プラン機能比較表（月額サポート）
+   ================================================ */
+.plan-compare {
+  margin-top: 44px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.plan-compare__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.plan-compare__table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.plan-compare__table th,
+.plan-compare__table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+  color: #fff;
+}
+.plan-compare__table thead th {
+  padding-top: 20px;
+  padding-bottom: 16px;
+  vertical-align: bottom;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.plan-compare__feature-col,
+.plan-compare__table td:first-child {
+  text-align: left;
+  color: var(--color-text-sub);
+  font-weight: 500;
+  white-space: normal;
+  min-width: 200px;
+}
+.plan-compare__table tbody tr:last-child td { border-bottom: none; }
+.plan-compare__name { display: block; color: #fff; font-weight: 900; font-size: 15px; letter-spacing: .02em; }
+.plan-compare__price { display: block; color: var(--color-text-sub2); font-size: 12px; margin-top: 4px; }
+.plan-compare__badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #062012;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.plan-compare__col--popular { background: rgba(31, 157, 84, .07); }
+.plan-compare__table thead .plan-compare__col--popular { border-left: 1px solid rgba(31, 157, 84, .3); border-right: 1px solid rgba(31, 157, 84, .3); border-top: 1px solid rgba(31, 157, 84, .3); }
+.plan-compare__table tbody .plan-compare__col--popular { border-left: 1px solid rgba(31, 157, 84, .3); border-right: 1px solid rgba(31, 157, 84, .3); }
+.plan-compare__table tbody tr:last-child .plan-compare__col--popular { border-bottom: 1px solid rgba(31, 157, 84, .3); border-radius: 0 0 8px 8px; }
+.plan-compare__table td.plan-compare__check { color: var(--color-accent); font-size: 17px; font-weight: 700; }
+.plan-compare__table td.plan-compare__dash { color: var(--color-text-sub2); }
+.plan-compare__table sup { color: var(--color-text-sub2); font-size: 10px; }

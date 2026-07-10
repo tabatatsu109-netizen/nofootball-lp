@@ -40,7 +40,20 @@ function initCheckout() {
   document.querySelector('[data-checkout-total]').textContent = plan.amount;
 
   const payBtn = document.getElementById('checkout-pay-btn');
-  payBtn.href = STRIPE_LINKS[id] || '#';
+  const link = STRIPE_LINKS[id] || '';
+  const isReady = link && !link.includes('PLACEHOLDER');
+
+  if (isReady) {
+    payBtn.href = link;
+    payBtn.textContent = 'Stripeで安全に支払う →';
+    payBtn.classList.remove('btn--ghost');
+    payBtn.classList.add('btn--primary');
+  } else {
+    payBtn.href = 'index.html#top';
+    payBtn.textContent = 'このプランはオンライン決済準備中：無料相談する →';
+    payBtn.classList.remove('btn--primary');
+    payBtn.classList.add('btn--ghost');
+  }
 
   document.getElementById('checkout-orderform-btn').href = `order-form.html?plan=${id}`;
 }

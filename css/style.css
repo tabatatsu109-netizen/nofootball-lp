@@ -1167,7 +1167,7 @@ img { max-width: 100%; display: block; }
 .demo-plan-cta { margin-top: 40px; text-align: center; }
 
 @media (min-width: 768px) {
-  .demo-select-grid { grid-template-columns: 1fr 1fr; }
+  .demo-select-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ================================================

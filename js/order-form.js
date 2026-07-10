@@ -161,20 +161,62 @@ function initStep2() {
 }
 
 /* ===== STEP3: ブランド素材 ===== */
+const MAX_PHOTOS = 8;
+
+// 画像をブラウザ内で縮小してデータURL化する（Firebaseに文字として保存できる形式）
+function compressImage(file, maxW, asPng, quality) {
+  return new Promise((resolve, reject) => {
+    // SVGや小さいPNGロゴは無劣化のまま読み込む
+    if (file.type === 'image/svg+xml' || (asPng && file.size < 200 * 1024)) {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = () => reject(new Error('read error'));
+      fr.readAsDataURL(file);
+      return;
+    }
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const scale = Math.min(1, maxW / img.width);
+      const w = Math.max(1, Math.round(img.width * scale));
+      const h = Math.max(1, Math.round(img.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(asPng ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', quality || 0.72));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('image load error')); };
+    img.src = url;
+  });
+}
+
 function initStep3() {
-  $('#f-logo').addEventListener('change', (e) => {
+  $('#f-logo').addEventListener('change', async (e) => {
     const f = e.target.files && e.target.files[0];
     if (!f) return;
-    if (state.logo && state.logo.url) URL.revokeObjectURL(state.logo.url);
-    state.logo = { name: f.name, url: URL.createObjectURL(f) };
-    renderLogo();
+    try {
+      const keepPng = f.type === 'image/png' || f.type === 'image/svg+xml';
+      const data = await compressImage(f, 800, keepPng);
+      state.logo = { name: f.name, data };
+      renderLogo();
+    } catch (err) {
+      alert('ロゴの読み込みに失敗しました。別の画像でお試しください。');
+    }
   });
-  $('#f-photos').addEventListener('change', (e) => {
+  $('#f-photos').addEventListener('change', async (e) => {
     const files = Array.from(e.target.files || []);
-    files.forEach((f) => {
-      state.photos.push({ id: Math.random().toString(36).slice(2), name: f.name, url: URL.createObjectURL(f) });
-    });
     e.target.value = '';
+    const room = MAX_PHOTOS - state.photos.length;
+    if (files.length > room) {
+      alert(`写真は最大 ${MAX_PHOTOS} 枚までです（あと ${Math.max(0, room)} 枚追加できます）`);
+    }
+    for (const f of files.slice(0, Math.max(0, room))) {
+      try {
+        const data = await compressImage(f, 1600, false, 0.72);
+        state.photos.push({ id: Math.random().toString(36).slice(2), name: f.name, data });
+      } catch (err) { /* 読めない画像はスキップ */ }
+    }
     renderPhotos();
   });
   ['f-colorMain', 'f-colorSub'].forEach((id) => {
@@ -187,7 +229,7 @@ function renderLogo() {
   const preview = $('#logo-preview');
   const label = $('#logo-label');
   if (state.logo) {
-    preview.innerHTML = `<img src="${state.logo.url}" alt="ロゴプレビュー">`;
+    preview.innerHTML = `<img src="${state.logo.data}" alt="ロゴプレビュー">`;
     label.textContent = state.logo.name;
   } else {
     preview.textContent = '🛡️';
@@ -199,9 +241,8 @@ function renderPhotos() {
   grid.innerHTML = '';
   state.photos.forEach((p) => {
     const item = el('div', 'photo-item');
-    item.innerHTML = `<img src="${p.url}" alt="${p.name}"><button type="button" class="photo-item__remove" aria-label="削除">×</button>`;
+    item.innerHTML = `<img src="${p.data}" alt="${p.name}"><button type="button" class="photo-item__remove" aria-label="削除">×</button>`;
     item.querySelector('.photo-item__remove').addEventListener('click', () => {
-      URL.revokeObjectURL(p.url);
       state.photos = state.photos.filter((x) => x.id !== p.id);
       renderPhotos();
     });
@@ -298,7 +339,7 @@ function renderSummary() {
   });
 
   $('#sum-attach-text').textContent = `ロゴ ${state.logo ? '1点' : 'なし'}・写真 ${state.photos.length} 枚`;
-  $('#sum-logo-preview').innerHTML = state.logo ? `<img src="${state.logo.url}" alt="ロゴ">` : '';
+  $('#sum-logo-preview').innerHTML = state.logo ? `<img src="${state.logo.data}" alt="ロゴ">` : '';
 
   $('#sw-accent').style.background = THEME_ACCENT[state.theme];
   $('#sw-main').style.background = fieldVal('f-colorMain') || '#1e5bd6';
@@ -387,7 +428,9 @@ async function submit() {
     refs: state.refs.filter((r) => r.trim()),
     hasLogo: !!state.logo,
     logoName: state.logo ? state.logo.name : '',
+    logoData: state.logo ? state.logo.data : '',
     photoCount: state.photos.length,
+    photos: state.photos.map((p) => ({ name: p.name, data: p.data })),
     theme: state.theme,
     submittedAt: new Date().toISOString(),
     status: 'new',
@@ -424,9 +467,7 @@ function restart() {
   state.step = 1;
   state.plan = null;
   state.monthly = null;
-  if (state.logo && state.logo.url) URL.revokeObjectURL(state.logo.url);
   state.logo = null;
-  state.photos.forEach((p) => URL.revokeObjectURL(p.url));
   state.photos = [];
   state.schedule = [{ day: '', time: '', activity: '' }];
   state.refs = ['', ''];
@@ -447,11 +488,21 @@ function restart() {
   $('#of-form-root').hidden = false;
 }
 
+function applyPlanFromQuery() {
+  const id = new URLSearchParams(location.search).get('plan');
+  const matched = PLANS.find((p) => p.id === (id || '').toLowerCase());
+  if (matched) {
+    state.plan = matched;
+    updatePlanSelection();
+  }
+}
+
 /* ===== 初期化 ===== */
 function init() {
   initTheme();
   renderStepsNav();
   renderPlans();
+  applyPlanFromQuery();
   renderMonthlyPlans();
   initStep2();
   initStep3();

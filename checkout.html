@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お申し込み・お支払い | nofootball</title>
+<meta name="description" content="nofootball のホームページ制作プランのお申し込み・お支払いページです。">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span class="nav__logo-accent">no</span>football
+    </a>
+    <a href="index.html#plans" class="btn btn--nav">← トップに戻る</a>
+  </div>
+</header>
+
+<section class="section section--dark">
+  <div class="container container--narrow">
+
+    <!-- ?plan= が無い/不正な場合のプラン選択画面 -->
+    <div id="checkout-picker" hidden>
+      <div class="container--center">
+        <div class="eyebrow">Checkout</div>
+        <h1 class="heading">プランを選択してください</h1>
+        <p class="lead lead--dark">お申し込みになるプランをお選びください。</p>
+      </div>
+      <div class="grid grid--plans">
+        <a class="plan-card" href="checkout.html?plan=light">
+          <div class="plan-card__en">Light</div>
+          <div class="plan-card__name">ライト</div>
+          <div class="plan-card__price"><span class="plan-card__num">10</span><span class="plan-card__unit">万円</span></div>
+          <div class="plan-card__line"></div>
+          <p class="plan-card__desc">単一ページで必要な情報をコンパクトに。選べるコンテンツで自由に組み立て。</p>
+          <span class="plan-card__more">このプランで申し込む <span class="plan-card__more-icon">→</span></span>
+        </a>
+        <a class="plan-card plan-card--highlight" href="checkout.html?plan=standard">
+          <span class="plan-card__tag">人気</span>
+          <div class="plan-card__en">Standard</div>
+          <div class="plan-card__name">スタンダード</div>
+          <div class="plan-card__price"><span class="plan-card__num">20</span><span class="plan-card__unit">万円</span></div>
+          <div class="plan-card__line"></div>
+          <p class="plan-card__desc">クラブに必要なページ一式。紹介・選手・試合結果まで。</p>
+          <span class="plan-card__more">このプランで申し込む <span class="plan-card__more-icon">→</span></span>
+        </a>
+        <a class="plan-card" href="checkout.html?plan=premium">
+          <div class="plan-card__en">Premium</div>
+          <div class="plan-card__name">プレミアム</div>
+          <div class="plan-card__price"><span class="plan-card__num">30</span><span class="plan-card__unit">万円</span></div>
+          <div class="plan-card__line"></div>
+          <p class="plan-card__desc">オリジナルデザイン＋クラブ専用機能。世界観を、隅々まで。</p>
+          <span class="plan-card__more">このプランで申し込む <span class="plan-card__more-icon">→</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ?plan= が有効な場合の注文サマリー・決済画面 -->
+    <div id="checkout-summary" hidden>
+      <div class="container--center">
+        <div class="eyebrow">Checkout</div>
+        <h1 class="heading" data-checkout-heading>お申し込み内容の確認</h1>
+      </div>
+
+      <div class="case-price">
+        <div class="case-price__row">
+          <div class="case-price__label">
+            <span class="case-price__name" data-checkout-name></span>
+            <span class="case-price__note" data-checkout-desc></span>
+          </div>
+          <div class="case-price__amount" data-checkout-amount></div>
+        </div>
+        <div class="case-price__total">
+          <span class="case-price__total-label">お支払い合計（税別）</span>
+          <span class="case-price__total-amount" data-checkout-total></span>
+        </div>
+      </div>
+      <p class="case-price__disclaimer">価格は税別です。要件により変動する場合があります。詳細は無料相談にてご確認ください。</p>
+
+      <div class="btn-row btn-row--center">
+        <a id="checkout-pay-btn" class="btn btn--primary btn--big" href="#">Stripeで安全に支払う →</a>
+      </div>
+
+      <div class="checkout-steps">
+        <div class="checkout-steps__step">
+          <span class="checkout-steps__num">01</span>
+          <div class="checkout-steps__body">
+            <div class="checkout-steps__title">お支払い完了</div>
+            <p class="checkout-steps__desc">Stripeの決済ページでお支払いを完了してください。</p>
+          </div>
+        </div>
+        <div class="checkout-steps__step">
+          <span class="checkout-steps__num">02</span>
+          <div class="checkout-steps__body">
+            <div class="checkout-steps__title">クラブ情報のご入力</div>
+            <p class="checkout-steps__desc">依頼シートにクラブ名・ロゴ・写真などの情報をご入力いただきます。</p>
+          </div>
+        </div>
+        <div class="checkout-steps__step">
+          <span class="checkout-steps__num">03</span>
+          <div class="checkout-steps__body">
+            <div class="checkout-steps__title">制作スタート</div>
+            <p class="checkout-steps__desc">内容を確認のうえ、制作を開始いたします。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row btn-row--center">
+        <a id="checkout-orderform-btn" class="btn btn--ghost btn--big" href="order-form.html">お支払い後：クラブ情報を入力する →</a>
+      </div>
+
+      <p class="checkout-legal-note">お支払いに関する詳細は<a href="tokushoho.html">特定商取引法に基づく表記</a>をご確認ください。</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="nav__logo"><span class="nav__logo-accent">no</span>football</div>
+      <div class="footer__desc">合同会社nofootball　・サッカークラブのためのホームページ制作 &amp; 運営システム<br>　　　　　　　　　　・フットボールアパレル<br>　　　　　　　　　　・育成年代サッカークラブの運営</div>
+    </div>
+    <a href="index.html#plans" class="btn btn--nav">プラン一覧に戻る</a>
+  </div>
+  <div class="footer__copyright">© 2026 nofootball LLC. All rights reserved. ・ <a href="tokushoho.html">特定商取引法に基づく表記</a></div>
+</footer>
+
+<script src="js/checkout-config.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

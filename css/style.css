@@ -174,6 +174,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   gap: 8px;
+  text-decoration: none;
 }
 .btn--nav {
   background: var(--color-accent);
@@ -1219,3 +1220,41 @@ img { max-width: 100%; display: block; }
 .plan-compare__table td.plan-compare__check { color: var(--color-accent); font-size: 17px; font-weight: 700; }
 .plan-compare__table td.plan-compare__dash { color: var(--color-text-sub2); }
 .plan-compare__table sup { color: var(--color-text-sub2); font-size: 10px; }
+
+/* ===== 決済ページ (checkout.html) ===== */
+a.plan-card { display: block; text-decoration: none; }
+#checkout-picker[hidden], #checkout-summary[hidden] { display: none; }
+#checkout-summary .case-price { margin-top: 36px; }
+#checkout-summary .btn-row { margin-top: 32px; }
+
+.checkout-steps { display: flex; flex-direction: column; gap: 0; margin-top: 52px; }
+.checkout-steps__step {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.checkout-steps__step:last-child { border-bottom: none; }
+.checkout-steps__num { font-family: var(--font-display); font-size: 26px; color: var(--color-accent); flex: none; width: 48px; }
+.checkout-steps__title { font-weight: 900; font-size: 16px; color: #fff; margin-bottom: 4px; }
+.checkout-steps__desc { color: var(--color-text-sub); font-size: 13.5px; line-height: 1.7; }
+
+.checkout-legal-note { text-align: center; color: var(--color-text-sub2); font-size: 12.5px; margin-top: 40px; }
+.checkout-legal-note a { color: var(--color-text-sub); text-decoration: underline; }
+
+/* ===== 特定商取引法ページ (tokushoho.html) ===== */
+.legal-table { margin-top: 40px; border-top: 1px solid var(--color-border); }
+.legal-table__row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.legal-table__term { color: var(--color-text-sub2); font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+.legal-table__desc { color: var(--color-text-sub); font-size: 14.5px; line-height: 1.8; margin: 0; }
+.legal-note { color: var(--color-text-sub2); font-size: 12.5px; line-height: 1.8; margin-top: 28px; }
+
+@media (min-width: 768px) {
+  .legal-table__row { flex-direction: row; gap: 24px; }
+  .legal-table__term { flex: 0 0 220px; }
+}

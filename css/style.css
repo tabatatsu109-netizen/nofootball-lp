@@ -1267,3 +1267,6 @@ a.plan-card { display: block; text-decoration: none; }
   .legal-table__row { flex-direction: row; gap: 24px; }
   .legal-table__term { flex: 0 0 220px; }
 }
+
+/* デザインデモボタン列（プラン構成内） */
+.plan-detail__demo-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
